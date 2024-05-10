@@ -95,15 +95,16 @@ public class WebUtil {
 		myIplicitilyWait(60);
 		statusAndDetails(Status.INFO, "Login Page opened successfully");
 	}
-    //////////// GetText\\\\\\\\\\\
-	public  String MyGetText(WebElement we) {
+
+	//////////// GetText\\\\\\\\\\\
+	public String MyGetText(WebElement we) {
 
 		String actualtext = null;
 		try {
 			actualtext = we.getText();
 			System.out.println("get text is found successfull ");
 		} catch (Exception e) {
-			//throw e;
+			// throw e;
 		}
 		return actualtext;
 	}
@@ -184,16 +185,14 @@ public class WebUtil {
 
 	}
 
-
-	//_________holdon 
-
+	// _________holdon
 
 	public void HoldOn(int sec) throws InterruptedException {
 
 		Thread.sleep(sec);
 	}
 
- //////////// myIplicitilyWait \\\\\\\\\\
+	//////////// myIplicitilyWait \\\\\\\\\\
 
 	public void myIplicitilyWait(long seconds) {
 
@@ -229,10 +228,6 @@ public class WebUtil {
 		}
 	}
 
-
-
-
-
 	//////////// goToHitUrl \\\\\\\\\\
 
 	/**
@@ -266,7 +261,6 @@ public class WebUtil {
 		}
 	}
 
-
 	//////////// getPageTitle \\\\\\\\\\
 
 	/**
@@ -293,8 +287,6 @@ public class WebUtil {
 		}
 		return pageTitle;
 	}
-
-
 
 	//////////// myClose \\\\\\\\\\
 
@@ -527,7 +519,6 @@ public class WebUtil {
 		}
 	}
 
-
 	//////////// myClick \\\\\\\\\\
 
 	/**
@@ -583,8 +574,6 @@ public class WebUtil {
 		Assert.assertEquals(actPageTitle, expTitle);
 
 	}
-
-
 
 	//////////// verifyString \\\\\\\\\\
 
@@ -658,8 +647,6 @@ public class WebUtil {
 	 * 
 	 */
 
-
-
 	//////////// checkEnabled \\\\\\\\\\
 	/**
 	 * The checkEnabled() method is commonly used to check the element that is
@@ -674,9 +661,6 @@ public class WebUtil {
 	 * @return it returns boolean i.e true or false
 	 * 
 	 */
-
-
-
 
 	//////////// selectByValueAttribute \\\\\\\\\\
 
@@ -822,8 +806,6 @@ public class WebUtil {
 		}
 	}
 
-
-
 	public void verifyInnerText(WebElement we, String expectedText) {
 		String actualText = we.getText();
 		if (actualText.equalsIgnoreCase(expectedText)) {
@@ -839,11 +821,11 @@ public class WebUtil {
 		// SoftAssert HardAssert
 		/// Verify Assert
 
-		//       try {
-		//    	   Assert.assertEquals(actualText, expectedText);  // fail
-		//       }catch(Throwable e) {
-		//    	   
-		//       }
+		// try {
+		// Assert.assertEquals(actualText, expectedText); // fail
+		// }catch(Throwable e) {
+		//
+		// }
 
 	}
 
@@ -947,7 +929,6 @@ public class WebUtil {
 		}
 	}
 
-
 	//////////// mouseMoveToElement \\\\\\\\\
 
 	/**
@@ -1000,4 +981,13 @@ public class WebUtil {
 		return str;
 	}
 
+	public void customDropDown(List<WebElement> list, String expected) {
+
+		for (int i = 0; i < list.size(); i++) {
+			String Text = list.get(i).getText();
+			if (Text.contains(expected)) {
+				list.get(i).click();
+			}
+		}
+	}
 }

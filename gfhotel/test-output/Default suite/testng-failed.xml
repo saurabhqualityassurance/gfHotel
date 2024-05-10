@@ -3,19 +3,19 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.E2logy.gfhotel.testcases.TestCase">
+      <class name="com.E2logy.gfhotel.dailylogs.testscript.Dailylogs">
         <methods>
-          <include name="beforeTestCases"/>
-          <include name="tc001"/>
-          <include name="afterClass"/>
-          <include name="afterMethod"/>
-          <include name="beforeMethod"/>
-          <include name="beforeSuite"/>
-          <include name="afterSuite"/>
           <include name="afterTest"/>
           <include name="beforeTestTag"/>
+          <include name="afterSuite"/>
+          <include name="beforeSuite"/>
+          <include name="beforeMethod"/>
+          <include name="afterMethod"/>
+          <include name="afterClass"/>
+          <include name="verifyVT004"/>
+          <include name="beforeTestCases"/>
         </methods>
-      </class> <!-- com.E2logy.gfhotel.testcases.TestCase -->
+      </class> <!-- com.E2logy.gfhotel.dailylogs.testscript.Dailylogs -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

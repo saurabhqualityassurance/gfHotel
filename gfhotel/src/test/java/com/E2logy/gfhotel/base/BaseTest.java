@@ -1,6 +1,9 @@
 package com.E2logy.gfhotel.base;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.lang.reflect.Method;
+import java.util.Properties;
 
 import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
@@ -24,22 +27,31 @@ import lombok.Getter;
 
 @Getter
 public class BaseTest {
+	
+	private String url ;
+	private String userName ;
+	private String userPassword ;
 	private WebUtil webUtil;
 	protected CommonPage reuseCode;
 
-	@BeforeGroups(groups = "Smoke")
-	public void testGroups() {
 
-	}
 
 	private ExtentReports extent;
 
 	@BeforeSuite
-	public void beforeSuite() {
+	public void beforeSuite() throws IOException {
 		System.out.println("Extent-Report Initialization");
 		extent = new ExtentReports();
 		ExtentSparkReporter spark = new ExtentSparkReporter("test-output//ExtentReports//gfhotel.html");
 		extent.attachReporter(spark);
+		
+		Properties prop = new Properties();
+		FileInputStream file = new FileInputStream("src\\test\\resources\\config.properties");
+		prop.load(file);
+		url = prop.getProperty("url");
+		
+		userName = prop.getProperty("userName");
+		userPassword = prop.getProperty("userPassword");
 
 	}
 
@@ -53,7 +65,7 @@ public class BaseTest {
 	public void beforeTestCases() {
 		webUtil = WebUtil.getObject();
 		webUtil.launchBrowser("chrome");
-		webUtil.goToHitUrl("http://54.211.252.139/");
+		webUtil.goToHitUrl(url);
 	}
 
 	//// data management
@@ -64,7 +76,7 @@ public class BaseTest {
 		ExtentTest extTest = extent.createTest(mt.getName());
 		webUtil.setExtentTestObject(extTest);
 		reuseCode = new CommonPage(webUtil);
-		reuseCode.login("herricke@gfhotels.com", "admin@123");
+		reuseCode.login(userName, userPassword);
 	}
 
 	@AfterMethod
