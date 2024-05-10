@@ -12,7 +12,7 @@ public class Dailylogs extends BaseTest {
 
 	@Test
 	public void verifyVT004() {
-		
+	
 		WebUtil weobj = WebUtil.getObject();
 		CommonPage commonPage= new CommonPage(weobj);
 		commonPage.goToDailylogs();
@@ -21,6 +21,10 @@ public class Dailylogs extends BaseTest {
 		DailyLogsDatailPage DailyLogsDatailPage=	new DailyLogsDatailPage(weobj);
 		DailyLogsDatailPage.fillTitle("Xyz");
 		DailyLogsDatailPage.fillNotte("note");
+		DailyLogsDatailPage.clickPropertyTB();
+		DailyLogsDatailPage.selectPriority("DEV TEST HOTEL");
+		
+		
 	}
 	
 	
